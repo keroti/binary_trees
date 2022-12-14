@@ -31,3 +31,7 @@ int btib_helper(const binary_tree_t *tree, int min, int max)
 	if (tree->n < min || tree->n > max)
 		return (0);
 
+	return (btib_helper(tree->left, min, tree->n - 1) &&
+		btib_helper(tree->right, tree->n + 1, max));
+	/* -1 and +1 stem from "There must be no duplicate values" req */
+}
